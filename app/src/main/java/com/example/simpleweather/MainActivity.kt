@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.res.Resources
 import android.location.Location
 import android.location.LocationManager
 import android.os.Build
@@ -11,9 +12,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
 import android.view.View
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat.getColor
 import androidx.databinding.DataBindingUtil
 import com.example.simpleweather.POJO.ModelClass
 import com.example.simpleweather.Utilities.ApiUtilities
@@ -150,9 +154,167 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateUI(id: Int) {
+        //ThunderStorm
         if (id in 200..232) {
-            TODO("Update the ui")
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+            //Change color of status bar
+            //window.statusBarColor = resources.getColor(R.color.black)
+            //Set color for tool bar
+            activityMainBinding.rlToolbar.setBackgroundColor(resources.getColor(R.color.black))
+            activityMainBinding.rlSubLayout.background = ContextCompat.getDrawable(
+                this@MainActivity,
+                R.drawable.bg_thunder_storm
+            )
+
+            activityMainBinding.llMainBgBelow.background = ContextCompat.getDrawable(
+                this@MainActivity,
+                R.drawable.bg_thunder_storm
+            )
+            //Background
+            activityMainBinding.ivWeatherBg.setImageResource(R.drawable.bg_thunder_storm)
+            //Weather icon
+            activityMainBinding.ivWeatherIcon.setImageResource(R.drawable.ic_sunrise)
+
+
         }
+        //Drizzle
+        else if (id in 300..322) {
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+            //Change color of status bar
+            //window.statusBarColor = resources.getColor(R.color.black)
+            //Set color for tool bar
+            activityMainBinding.rlToolbar.setBackgroundColor(resources.getColor(R.color.black))
+            activityMainBinding.rlSubLayout.background = ContextCompat.getDrawable(
+                this@MainActivity,
+                R.drawable.bg_drizzle
+            )
+
+            activityMainBinding.llMainBgBelow.background = ContextCompat.getDrawable(
+                this@MainActivity,
+                R.drawable.bg_drizzle
+            )
+            //Background
+            activityMainBinding.ivWeatherBg.setImageResource(R.drawable.bg_drizzle)
+            //Weather icon
+            activityMainBinding.ivWeatherIcon.setImageResource(R.drawable.ic_sunrise)
+
+
+        }
+        //Rain
+        else if (id in 500..532) {
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+            //Change color of status bar
+            //window.statusBarColor = resources.getColor(R.color.black)
+            //Set color for tool bar
+            activityMainBinding.rlToolbar.setBackgroundColor(resources.getColor(R.color.black))
+            activityMainBinding.rlSubLayout.background = ContextCompat.getDrawable(
+                this@MainActivity,
+                R.drawable.bg_rainy
+            )
+
+            activityMainBinding.llMainBgBelow.background = ContextCompat.getDrawable(
+                this@MainActivity,
+                R.drawable.bg_rainy
+            )
+            //Background
+            activityMainBinding.ivWeatherBg.setImageResource(R.drawable.bg_rainy)
+            //Weather icon
+            activityMainBinding.ivWeatherIcon.setImageResource(R.drawable.bg_rainy)
+
+
+        }
+        else if (id in 600..632) {
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+            //Change color of status bar
+            //window.statusBarColor = resources.getColor(R.color.black)
+            //Set color for tool bar
+            activityMainBinding.rlToolbar.setBackgroundColor(resources.getColor(R.color.black))
+            activityMainBinding.rlSubLayout.background = ContextCompat.getDrawable(
+                this@MainActivity,
+                R.drawable.bg_snowy
+            )
+
+            activityMainBinding.llMainBgBelow.background = ContextCompat.getDrawable(
+                this@MainActivity,
+                R.drawable.bg_snowy
+            )
+            //Background
+            activityMainBinding.ivWeatherBg.setImageResource(R.drawable.bg_snowy)
+            //Weather icon
+            activityMainBinding.ivWeatherIcon.setImageResource(R.drawable.bg_snowy)
+
+
+        }
+        else if (id == 800) {
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+            //Change color of status bar
+            //window.statusBarColor = resources.getColor(R.color.black)
+            //Set color for tool bar
+            activityMainBinding.rlToolbar.setBackgroundColor(resources.getColor(R.color.black))
+            activityMainBinding.rlSubLayout.background = ContextCompat.getDrawable(
+                this@MainActivity,
+                R.drawable.bg_clear
+            )
+
+            activityMainBinding.llMainBgBelow.background = ContextCompat.getDrawable(
+                this@MainActivity,
+                R.drawable.bg_clear
+            )
+            //Background
+            activityMainBinding.ivWeatherBg.setImageResource(R.drawable.bg_clear)
+            //Weather icon
+            activityMainBinding.ivWeatherIcon.setImageResource(R.drawable.bg_clear)
+
+        }
+        else if (id in 801..805) {
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+            //Change color of status bar
+            //window.statusBarColor = resources.getColor(R.color.black)
+            //Set color for tool bar
+            activityMainBinding.rlToolbar.setBackgroundColor(resources.getColor(R.color.black))
+            activityMainBinding.rlSubLayout.background = ContextCompat.getDrawable(
+                this@MainActivity,
+                R.drawable.bg_cloudy
+            )
+
+            activityMainBinding.llMainBgBelow.background = ContextCompat.getDrawable(
+                this@MainActivity,
+                R.drawable.bg_cloudy
+            )
+            //Background
+            activityMainBinding.ivWeatherBg.setImageResource(R.drawable.bg_cloudy)
+            //Weather icon
+            activityMainBinding.ivWeatherIcon.setImageResource(R.drawable.bg_cloudy)
+
+        } else {
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+            //Change color of status bar
+            //window.statusBarColor = resources.getColor(R.color.black)
+            //Set color for tool bar
+            activityMainBinding.rlToolbar.setBackgroundColor(resources.getColor(R.color.black))
+            activityMainBinding.rlSubLayout.background = ContextCompat.getDrawable(
+                this@MainActivity,
+                R.drawable.bg_normal
+            )
+
+            activityMainBinding.llMainBgBelow.background = ContextCompat.getDrawable(
+                this@MainActivity,
+                R.drawable.bg_normal
+            )
+            //Background
+            activityMainBinding.ivWeatherBg.setImageResource(R.drawable.bg_normal)
+            //Weather icon
+            activityMainBinding.ivWeatherIcon.setImageResource(R.drawable.bg_normal)
+
+        }
+
     }
 
     //From kelvin to celsius degree
