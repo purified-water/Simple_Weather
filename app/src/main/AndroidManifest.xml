@@ -3,11 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <!--Get location permission-->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
-
-
     <!--Edit permission for internet access-->
     <uses-permission android:name="android.permission.INTERNET"/>
 
