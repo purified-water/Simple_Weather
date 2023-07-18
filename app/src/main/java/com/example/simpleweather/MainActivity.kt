@@ -36,6 +36,8 @@ import java.time.Instant
 import java.time.ZoneId
 import java.util.*
 import kotlin.math.roundToInt
+import android.util.Log
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
@@ -49,10 +51,10 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
-        activityMainBinding.rlMainLayout.visibility = View.VISIBLE
+        activityMainBinding.rlMainLayout.visibility = View.GONE
 
         //Get the location of device
-//        getCurrentLocation()
+        getCurrentLocation()
 
         activityMainBinding.etGetCityName.setOnEditorActionListener { v, actionId, keyEvent ->
             //User search for city name
@@ -121,8 +123,11 @@ class MainActivity : AppCompatActivity() {
                 fusedLocationProviderClient.lastLocation.addOnCompleteListener(this) { task ->
                     val location: Location? = task.result
                     if (location == null) {
+                        Log.d("Location error", "Location not found")
                         Toast.makeText(this, "Failed to receive location", Toast.LENGTH_SHORT)
                             .show()
+
+
 
                     } else {
                         //Get current weather
@@ -158,7 +163,7 @@ class MainActivity : AppCompatActivity() {
         ApiUtilities.getApiInterface()?.getCurrentWeatherData(latitude, longitude, API_KEY)
             ?.enqueue(object :
                 Callback<ModelClass> {
-                @RequiresApi(Build.VERSION_CODES.O)
+//                @RequiresApi(Build.VERSION_CODES.O)
                 override fun onResponse(call: Call<ModelClass>, response: Response<ModelClass>) {
                     if (response.isSuccessful) {
                         setDataOnViews(response.body())
@@ -176,7 +181,7 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     @RequiresApi(Build.VERSION_CODES.O)
     private fun setDataOnViews(body: ModelClass?) {
-        val sdf = SimpleDateFormat("'dd/mm/yy hh:mm")
+        val sdf = SimpleDateFormat("dd/MM/yy HH:mm")
         val currentDate = sdf.format(Date())
         //Get the current date
         activityMainBinding.tvDate.text = currentDate
