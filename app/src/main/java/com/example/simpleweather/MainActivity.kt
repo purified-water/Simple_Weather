@@ -1,26 +1,25 @@
 package com.example.simpleweather
 
-import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.content.res.Resources
+import android.graphics.Color
 import android.location.Location
 import android.location.LocationManager
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat.getColor
 import androidx.databinding.DataBindingUtil
 import com.example.simpleweather.POJO.ModelClass
 import com.example.simpleweather.Utilities.ApiUtilities
@@ -35,8 +34,6 @@ import java.text.SimpleDateFormat
 import java.time.Instant
 import java.time.ZoneId
 import java.util.*
-import kotlin.math.roundToInt
-import android.util.Log
 
 
 class MainActivity : AppCompatActivity() {
@@ -83,7 +80,7 @@ class MainActivity : AppCompatActivity() {
 
         ApiUtilities.getApiInterface()?.getCityWeatherData(cityName, API_KEY)
             ?.enqueue(object : Callback<ModelClass> {
-                @RequiresApi(Build.VERSION_CODES.O)
+//                @RequiresApi(Build.VERSION_CODES.O)
                 override fun onResponse(call: Call<ModelClass>, response: Response<ModelClass>) {
                     setDataOnViews(response.body())
                 }
@@ -179,7 +176,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     @SuppressLint("SetTextI18n")
-    @RequiresApi(Build.VERSION_CODES.O)
+//    @RequiresApi(Build.VERSION_CODES.O)
     private fun setDataOnViews(body: ModelClass?) {
         val sdf = SimpleDateFormat("dd/MM/yy HH:mm")
         val currentDate = sdf.format(Date())
@@ -232,18 +229,23 @@ class MainActivity : AppCompatActivity() {
                 R.drawable.bg_thunder_storm
             )
 
-            activityMainBinding.llMainBgBelow.background = ContextCompat.getDrawable(
-                this@MainActivity,
-                R.drawable.bg_thunder_storm
-            )
-            activityMainBinding.llMainBgAbove.background = ContextCompat.getDrawable(
+//            activityMainBinding.llMainBgBelow.background = ContextCompat.getDrawable(
+//                this@MainActivity,
+//                R.drawable.bg_thunder_storm
+//            )
+//            activityMainBinding.llMainBgAbove.background = ContextCompat.getDrawable(
+//                this@MainActivity,
+//                R.drawable.bg_thunder_storm
+//            )
+            //Tool bar
+            activityMainBinding.rlToolbar.background = ContextCompat.getDrawable(
                 this@MainActivity,
                 R.drawable.bg_thunder_storm
             )
             //Background
             activityMainBinding.ivWeatherBg.setImageResource(R.drawable.bg_thunder_storm)
             //Weather icon
-            activityMainBinding.ivWeatherIcon.setImageResource(R.drawable.ic_sunrise)
+            activityMainBinding.ivWeatherIcon.setImageResource(R.drawable.thunderstorm)
 
 
         }
@@ -260,19 +262,23 @@ class MainActivity : AppCompatActivity() {
                 R.drawable.bg_drizzle
             )
 
-            activityMainBinding.llMainBgBelow.background = ContextCompat.getDrawable(
+//            activityMainBinding.llMainBgBelow.background = ContextCompat.getDrawable(
+//                this@MainActivity,
+//                R.drawable.bg_drizzle
+//            )
+//            activityMainBinding.llMainBgAbove.background = ContextCompat.getDrawable(
+//                this@MainActivity,
+//                R.drawable.bg_drizzle
+//            )
+            //Tool bar
+            activityMainBinding.rlToolbar.background = ContextCompat.getDrawable(
                 this@MainActivity,
                 R.drawable.bg_drizzle
             )
-            activityMainBinding.llMainBgAbove.background = ContextCompat.getDrawable(
-                this@MainActivity,
-                R.drawable.bg_drizzle
-            )
-
             //Background
             activityMainBinding.ivWeatherBg.setImageResource(R.drawable.bg_drizzle)
             //Weather icon
-            activityMainBinding.ivWeatherIcon.setImageResource(R.drawable.ic_sunrise)
+            activityMainBinding.ivWeatherIcon.setImageResource(R.drawable.rainy)
 
 
         }
@@ -289,18 +295,23 @@ class MainActivity : AppCompatActivity() {
                 R.drawable.bg_rainy
             )
 
-            activityMainBinding.llMainBgBelow.background = ContextCompat.getDrawable(
-                this@MainActivity,
-                R.drawable.bg_rainy
-            )
-            activityMainBinding.llMainBgAbove.background = ContextCompat.getDrawable(
+//            activityMainBinding.llMainBgBelow.background = ContextCompat.getDrawable(
+//                this@MainActivity,
+//                R.drawable.bg_rainy
+//            )
+//            activityMainBinding.llMainBgAbove.background = ContextCompat.getDrawable(
+//                this@MainActivity,
+//                R.drawable.bg_rainy
+//            )
+            //Tool bar
+            activityMainBinding.rlToolbar.background = ContextCompat.getDrawable(
                 this@MainActivity,
                 R.drawable.bg_rainy
             )
             //Background
             activityMainBinding.ivWeatherBg.setImageResource(R.drawable.bg_rainy)
             //Weather icon
-            activityMainBinding.ivWeatherIcon.setImageResource(R.drawable.bg_rainy)
+            activityMainBinding.ivWeatherIcon.setImageResource(R.drawable.rainy)
 
 
         } else if (id in 600..632) {
@@ -315,18 +326,23 @@ class MainActivity : AppCompatActivity() {
                 R.drawable.bg_snowy
             )
 
-            activityMainBinding.llMainBgBelow.background = ContextCompat.getDrawable(
-                this@MainActivity,
-                R.drawable.bg_snowy
-            )
-            activityMainBinding.llMainBgAbove.background = ContextCompat.getDrawable(
+//            activityMainBinding.llMainBgBelow.background = ContextCompat.getDrawable(
+//                this@MainActivity,
+//                R.drawable.bg_snowy
+//            )
+//            activityMainBinding.llMainBgAbove.background = ContextCompat.getDrawable(
+//                this@MainActivity,
+//                R.drawable.bg_snowy
+//            )
+            //Tool bar
+            activityMainBinding.rlToolbar.background = ContextCompat.getDrawable(
                 this@MainActivity,
                 R.drawable.bg_snowy
             )
             //Background
             activityMainBinding.ivWeatherBg.setImageResource(R.drawable.bg_snowy)
             //Weather icon
-            activityMainBinding.ivWeatherIcon.setImageResource(R.drawable.bg_snowy)
+            activityMainBinding.ivWeatherIcon.setImageResource(R.drawable.snowy)
 
 
         } else if (id == 800) {
@@ -341,18 +357,20 @@ class MainActivity : AppCompatActivity() {
                 R.drawable.bg_clear
             )
 
-            activityMainBinding.llMainBgBelow.background = ContextCompat.getDrawable(
-                this@MainActivity,
-                R.drawable.bg_clear
-            )
-            activityMainBinding.llMainBgAbove.background = ContextCompat.getDrawable(
-                this@MainActivity,
-                R.drawable.bg_clear
-            )
+//            activityMainBinding.llMainBgBelow.background = ContextCompat.getDrawable(
+//                this@MainActivity,
+//                R.drawable.bg_clear
+//            )
+//            activityMainBinding.llMainBgAbove.background = ContextCompat.getDrawable(
+//                this@MainActivity,
+//                R.drawable.bg_clear
+//            )
+            //Tool bar
+            activityMainBinding.rlToolbar.setBackgroundColor(Color.TRANSPARENT)
             //Background
             activityMainBinding.ivWeatherBg.setImageResource(R.drawable.bg_clear)
             //Weather icon
-            activityMainBinding.ivWeatherIcon.setImageResource(R.drawable.bg_clear)
+            activityMainBinding.ivWeatherIcon.setImageResource(R.drawable.clear)
 
         } else if (id in 801..805) {
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
@@ -366,18 +384,25 @@ class MainActivity : AppCompatActivity() {
                 R.drawable.bg_cloudy
             )
 
-            activityMainBinding.llMainBgBelow.background = ContextCompat.getDrawable(
+//            activityMainBinding.llMainBgBelow.background = ContextCompat.getDrawable(
+//                this@MainActivity,
+//                R.drawable.bg_cloudy
+//            )
+//            activityMainBinding.llMainBgAbove.background = ContextCompat.getDrawable(
+//                this@MainActivity,
+//                R.drawable.bg_cloudy
+//            )
+            //Tool bar
+            activityMainBinding.rlToolbar.background = ContextCompat.getDrawable(
                 this@MainActivity,
-                R.drawable.bg_cloudy
+                R.drawable.bg_cloudy_flipped
             )
-            activityMainBinding.llMainBgAbove.background = ContextCompat.getDrawable(
-                this@MainActivity,
-                R.drawable.bg_cloudy
-            )
+
+
             //Background
             activityMainBinding.ivWeatherBg.setImageResource(R.drawable.bg_cloudy)
             //Weather icon
-            activityMainBinding.ivWeatherIcon.setImageResource(R.drawable.bg_cloudy)
+            activityMainBinding.ivWeatherIcon.setImageResource(R.drawable.cloudy)
 
         } else {
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
@@ -391,18 +416,23 @@ class MainActivity : AppCompatActivity() {
                 R.drawable.bg_normal
             )
 
-            activityMainBinding.llMainBgBelow.background = ContextCompat.getDrawable(
-                this@MainActivity,
-                R.drawable.bg_normal
-            )
-            activityMainBinding.llMainBgAbove.background = ContextCompat.getDrawable(
+//            activityMainBinding.llMainBgBelow.background = ContextCompat.getDrawable(
+//                this@MainActivity,
+//                R.drawable.bg_normal
+//            )
+//            activityMainBinding.llMainBgAbove.background = ContextCompat.getDrawable(
+//                this@MainActivity,
+//                R.drawable.bg_normal
+//            )
+            //Tool bar
+            activityMainBinding.rlToolbar.background = ContextCompat.getDrawable(
                 this@MainActivity,
                 R.drawable.bg_normal
             )
             //Background
             activityMainBinding.ivWeatherBg.setImageResource(R.drawable.bg_normal)
             //Weather icon
-            activityMainBinding.ivWeatherIcon.setImageResource(R.drawable.bg_normal)
+            activityMainBinding.ivWeatherIcon.setImageResource(R.drawable.clear)
 
         }
         activityMainBinding.pbLoading.visibility = View.GONE
